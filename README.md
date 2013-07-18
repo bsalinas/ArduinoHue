@@ -18,6 +18,9 @@ To create the SerialHue object,
 ```
 SerialHue hue("192.168.1.10", &Serial);
 
+void setup(){
+
+}
 void loop(){
   Serial.begin(9600);
   hue.connect("YOUR_DEVICE_ID", "YOUR_USERNAME");
@@ -34,3 +37,6 @@ hue.turnOff(2); //2 is the Light ID.
 //Hue is on the scale of 0 - 65,000 and saturation is on the scale of 0-255
 hue.seHueSat(1,45000,255);
 ```
+
+For the Arduino to communicate with the Hue Lights, you will need to run the `SerialBridge.py` python script on your computer. In that file, you will need to update the device id on line 5 to the device id of your Arduino (for instance 'COM5' on Windows or '/dev/tty.usbmodemfd131' on a Mac).
+To use this script you will need the pySerial module (http://pyserial.sourceforge.net/) and the Requests module (http://docs.python-requests.org/en/latest/user/install.html#install).
