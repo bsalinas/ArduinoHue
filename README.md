@@ -3,6 +3,13 @@ ArduinoHue
 
 An Arduino Library for controlling the Philips Hue. This is a work in progress, but the basic functionality is present.
 
+## Important Note ##
+
+Starting in February 2016, Custom whitelist usernames will no longer be allowed and the bridge randomly generated username must be used instead. Please see [this link](http://www.developers.meethue.com/documentation/important-whitelist-changes) for more information.
+
+This library does not currently support this. If you are interested in taking over ownership of this repo, feel free to do so.
+
+
 ## Different Versions ##
 Eventually, there will be multiple flavors of the library which will connec to the network in different manners. The first version, which is available now, communicates with a computer over Serial and uses a Python script to post the data to the internet.
 
