@@ -42,7 +42,7 @@ hue.turnOn(1);//1 is the Light ID.
 hue.turnOff(2); //2 is the Light ID.
 //1 is the light, 45000 is the hue, and 255 is the saturation;
 //Hue is on the scale of 0 - 65,000 and saturation is on the scale of 0-255
-hue.seHueSat(1,45000,255);
+hue.setHueSat(1,45000,255);
 ```
 
 For the Arduino to communicate with the Hue Lights, you will need to run the `SerialBridge.py` python script on your computer. In that file, you will need to update the device id on line 5 to the device id of your Arduino (for instance `COM5` on Windows or `/dev/tty.usbmodemfd131` on a Mac).
