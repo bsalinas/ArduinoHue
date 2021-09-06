@@ -2,7 +2,7 @@ import serial, requests
 #replace this with your serial device.
 # ser = serial.Serial('/dev/tty.usbmodemfd141', 9600)
 
-ser = serial.Serial('/dev/tty.usbmodemfd131', 9600)
+ser = serial.Serial('/dev/ttyACM0', 9600)
 #ser = serial.Serial('/dev/tty.usbserial-A800I2RW', 9600)
 siteStartChar = 0x04
 siteEndChar = 0x05
@@ -19,13 +19,13 @@ def readValue(endChar):
 		val = ser.read()
 		if ord(val) == endChar:
 			return tmp
-		tmp += val
-		#print tmp
+		tmp += val.decode("utf-8")
+
 def put(s, r, d):
 	#"http://192.168.1.10/api/22a828f1898a4257c3f181e753241337/lights/1/state"
 	r = requests.put(s+r, data=d)
 	resp = r.content
-	print resp;
+	print(resp)
 	ser.write(resp)
 
 while 1:
@@ -36,15 +36,15 @@ while 1:
 		postRequest = ""
 		postData = ""
 		site = readValue(siteEndChar)
-		print 'postSite=', site
+		print('postSite=', site)
 	elif ord(val) == postStartChar:
 		postRequest = ""
 		postRequest = readValue(postEndChar)
-		print 'postRequest=', postRequest
+		print('postRequest=', postRequest)
 	elif ord(val) == dataStartChar:
 		postData = ""
 		postData = readValue(dataEndChar)
-		print 'postData=', postData
+		print('postData=', postData)
 		put(site, postRequest, postData)
 	else:
-		print val
+		print(val)

@@ -17,7 +17,9 @@ boolean SerialHue::makePost(char* request, char* data){
 	_serial->print(_ipAddress);
 	_serial->write(0x05);
 	_serial->write(0x06);
-	_serial->print("/api/22a828f1898a4257c3f181e753241337/");
+	_serial->print("/api/");
+	_serial->print(_username);
+	_serial->print("/");
 	_serial->print(request);
 	_serial->write(0x07);
 	_serial->write(0x08);
