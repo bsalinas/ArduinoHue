@@ -4,7 +4,7 @@
 #include <avr/pgmspace.h>
 
 	const char turn_on_off[] PROGMEM = "{\"on\":%s}";
-	const char change_color_string[] PROGMEM = "{\"hue\":%i,\"sat\":%i}";
+	const char change_color_string[] PROGMEM = "{\"hue\":%u,\"sat\":%i}";
 	const char set_bri_string[] PROGMEM = "{\"bri\":%i}";
 	const char set_alert_string[] PROGMEM = "{\"alert\":\"%s\"}";
 
@@ -20,7 +20,7 @@ class ArduinoHue{
 public:
 	int turnOff(int light);
 	int turnOn(int light);
-	int setHueSat(int light,int hue, int sat);
+	int setHueSat(int light,unsigned hue, int sat);
 	int setBri(int light, int bri);
 	int setShortAlert(int light, boolean on);
 	int setLongAlert(int light, boolean on);

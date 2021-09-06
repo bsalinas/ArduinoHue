@@ -24,7 +24,7 @@ int ArduinoHue::fillRequestAndProcess(int light,boolean useState){
 	return STATUS_POST_ERROR;
 	
 }
-int ArduinoHue::setHueSat(int light, int hue, int sat){
+int ArduinoHue::setHueSat(int light, unsigned hue, int sat){
 	strcpy_P(_buffer, (char*)change_color_string); 
 	sprintf(_lastResponse, _buffer, hue, sat);
 	return fillRequestAndProcess(light,true);
